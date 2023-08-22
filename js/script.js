@@ -29,7 +29,7 @@ function showList(array) {
   const container = document.getElementById("list");
   container.innerHTML = "";
   // Más info de forEach => https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-  array.forEach((element) => {
+  array.forEach((element) => {  
     const li = document.createElement("li");
     li.appendChild(document.createTextNode(element));
     container.appendChild(li);
@@ -38,5 +38,14 @@ function showList(array) {
 
 document.addEventListener("DOMContentLoaded", (e) => {
   // Escribe tu solución aquí
-  // Sugerencia de cómo mostrar el array => showList(strangeArray);
-});
+    const container = document.getElementById("list");
+  
+    const strings = strangeArray.filter((element) => typeof element === 'string');
+    strings.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+  
+    strings.forEach((element) => {
+      const li = document.createElement("li");
+      li.textContent = element;
+      container.appendChild(li);
+    });
+  });
